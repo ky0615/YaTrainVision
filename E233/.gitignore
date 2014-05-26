@@ -1,0 +1,3 @@
+build/*.js
+font/*
+node_modules
