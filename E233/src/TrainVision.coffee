@@ -1,3 +1,14 @@
+###
+Chuo Line E233 TrainVision
+
+main class
+
+Copyright (c) 2014 Koutarou Yabe
+
+This software is released under the MIT License.
+
+http://opensource.org/licenses/mit-license.php
+###
 class @TrainVision
 	assets:
 		"bg" : "./img/bg_e233.jpg"
