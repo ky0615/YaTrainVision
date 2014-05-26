@@ -35,20 +35,23 @@ class @TrainVision
 		@app.replaceScene @LoadingScene
 		@app.run()
 
-	addScene:->
+	addScene:=>
 		tm.define 'MainScene', 
 			superClass: 'tm.app.Scene'
 			init: ->
 				console.log "init"
 				@superInit()
+				@addChild @addBackgroundImage()
 				@mainGroup = tm.app.CanvasElement()
 				@addChild @mainGroup
-
-				@labelInit()
 				return
 			labelInit: ->
 				@MainStationLabel = MainStationLabel()
 				@mainGroup.addChild @MainStationLabel
+
+			addBackgroundImage: =>
+				tm.display.Sprite "bg", @bg_size.w, @bg_size.h
+						  .setPosition @bg_size.w/2, @bg_size.h/2
 		
 		tm.define 'myLoadingScene', 
 			superClass: 'tm.app.LoadingScene'
