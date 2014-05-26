@@ -18,7 +18,7 @@ class @TrainVision
 		h: 1536
 
 	mainCanvas: null
-	
+
 	init:->
 		@addScene()
 
@@ -44,6 +44,7 @@ class @TrainVision
 				@addChild @addBackgroundImage()
 				@mainGroup = tm.app.CanvasElement()
 				@addChild @mainGroup
+				@labelInit()
 				return
 			labelInit: ->
 				@MainStationLabel = MainStationLabel()
@@ -59,17 +60,32 @@ class @TrainVision
 				@superInit param
 
 		tm.define 'MainStationLabel',
-			superClass: 'tm.ui.LabelArea'
+			superClass: 'tm.display.Label'
 			init: ->
-				@superInit(
+				@superInit()
+				@$extend
 					text: "東京"
-					fillStyle: "white"
-					mode: "virtical"
-					width: 500
-					height: 1600
-					fontSize: 200
-				)
-				@setX 800
-				@setY 1200
+					fillStyle: "black"
+					fontSize: 300
+					x: 1025
+					y: 470
+				@setAlign "center"
+				@setBaseline "bottom"
+				@maxWidth = 980
+				console.log @
+
+		# tm.define 'MainStationLabel',
+		# 	superClass: 'tm.ui.LabelArea'
+		# 	init: ->
+		# 		@superInit(
+		# 			text: "東京"
+		# 			fillStyle: "white"
+		# 			mode: "virtical"
+		# 			width: 500
+		# 			height: 1600
+		# 			fontSize: 200
+		# 		)
+		# 		@setX 800
+		# 		@setY 1200
 
 		return
