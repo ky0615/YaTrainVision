@@ -50,36 +50,6 @@ class @Text
 		"こちら側のドアが開きます"
 		"Doors on this side will open"
 	]
-
-	destination_list:
-		tokyo:[
-			"東京行"
-			"For Tōkyō"
-		]
-		kanda:[
-			"神田行"
-			"For Kanda"
-		]
-		ochanomizu:[
-			"御茶ノ水行"
-			"For Ochanomizu"
-		]
-		sinjiku:[
-			"新宿行"
-			"For Shinjuku"
-		]
-		nakano:[
-			"中野行"
-			"For Nakano"
-		]
-		mitaka:[
-			"三鷹行"
-			"For Mitaka"
-		]
-		takao:[
-			"高尾行"
-			"For Takao"
-		]
 		# 神田　御茶ノ水　新宿　中野　三鷹　東小金井　武蔵小金井　国分寺　立川　豊田　八王子　大月　相模湖　四方津　河口湖　富士山　富士吉田　　御嶽　青梅　青梅・武蔵五日市　西立川　箱根ヶ崎・武蔵五日市　武蔵五日市・高麗川　奥多摩　河辺　
 
 	get_destination_text:(lang_flag=1, station="tokyo")=>
