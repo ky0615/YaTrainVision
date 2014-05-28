@@ -85,6 +85,57 @@ class @Text
 			return text
 			require
 
+	###
+		駅名のリストを取得
+		下りになるように並べて下さい。
+	###
+	get_station_list:(des_station = [])->
+		s_list = []
+		for i in des_station
+			if @destination_station[i]
+				for j in @destination_station[i]
+					if j and @station[j]
+						s_list.push @station[j]
+			else if Array.isArray i
+				# 最終の駅や手動登録の場合
+				for k in i
+					s_list.push @station[k]
+		return s_list
+
+
+	###
+		始発駅は配列使ってどーにかして。仕様です。
+	 ###
+	destination_list:
+		takao_tokyo:[
+			["tokyo"]
+			"tokyo_shinjuku"
+			"sinjuku_nakano"
+			"nakano_mitaka"
+			"mitaka_musashi_koganei"
+			"musashi_koganei_kokubunji"
+			"kokubunji_tachikawa"
+			"tachikawa_toyoda"
+			"toyoda_hachioji"
+			"hachioji_takao"
+		]
+		tachikawa_tokyo:[
+			["tokyo"]
+			"tokyo_shinjuku"
+			"sinjuku_nakano"
+			"nakano_mitaka"
+			"mitaka_musashi_koganei"
+			"musashi_koganei_kokubunji"
+			"kokubunji_tachikawa"
+		]
+		ome_tachikawa:[
+			["tachikawa"]
+			"tachikawa_haijima"
+			"haijima_kabe"
+			"kabe_ome"
+		]
+
+
 	destination_station:
 
 		###　青梅線・五日市線・八高線　###
