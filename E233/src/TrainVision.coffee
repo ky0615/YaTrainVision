@@ -38,6 +38,33 @@ class @TrainVision
 		@app.replaceScene @LoadingScene
 		@app.run()
 
+	open:->
+		$ "#menu"
+			.fadeIn()
+	
+	close:->
+		$ "#menu"
+			.fadeOut()
+
+	initUIStationList:=>
+		@setUIStationList()
+		# $ "#container"
+		# 	.click @open()
+		$("#container").click =>
+			@open()
+		$(".btn-cancel, .btn-submit").click =>
+			@close()
+		return
+
+	setUIStationList:(station = "takao_tokyo")->
+		# 要素を全て削除してから登録します。
+		# @UI.setStationList()
+		$ "#now_stations"
+			.empty()
+		if Text.destination_list[station]
+			for i in Text.get_station_list Text.destination_list[station]
+				console.log i
+
 	addScene:=>
 		tm.define 'MainScene', 
 			superClass: 'tm.app.Scene'
@@ -54,6 +81,7 @@ class @TrainVision
 				@mainGroup.addChild @MainStationLabel
 
 			addBackgroundImage: =>
+				@initUIStationList()
 				tm.display.Sprite "bg", @bg_size.w, @bg_size.h
 						  .setPosition @bg_size.w/2, @bg_size.h/2
 		

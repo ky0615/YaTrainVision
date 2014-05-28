@@ -128,6 +128,18 @@ class @Text
 			"musashi_koganei_kokubunji"
 			"kokubunji_tachikawa"
 		]
+		ome_tokyo:[
+			["tokyo"]
+			"tokyo_shinjuku"
+			"sinjuku_nakano"
+			"nakano_mitaka"
+			"mitaka_musashi_koganei"
+			"musashi_koganei_kokubunji"
+			"kokubunji_tachikawa"	
+			"tachikawa_haijima"
+			"haijima_kabe"
+			"kabe_ome"
+		]
 		ome_tachikawa:[
 			["tachikawa"]
 			"tachikawa_haijima"
@@ -135,6 +147,11 @@ class @Text
 			"kabe_ome"
 		]
 
+	destination_list_tlanslate:
+		takao_tokyo: "高尾‐東京"
+		tachikawa_tokyo: "立川‐東京"
+		ome_tokyo: "青梅‐東京"
+		ome_tachikawa: "青梅‐立川"
 
 	destination_station:
 
