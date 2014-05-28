@@ -13,6 +13,9 @@ class @TrainVision
 	assets:
 		"bg" : "./img/bg_e233.jpg"
 
+	timer: null
+	timerCB = []
+
 	bg_size:
 		w: 2048
 		h: 1536
@@ -59,20 +62,39 @@ class @TrainVision
 			init: (param)->
 				@superInit param
 
-		tm.define 'MainStationLabel',
+		tm.define 'StationLabel',
 			superClass: 'tm.display.Label'
 			init: ->
 				@superInit()
 				@$extend
 					text: "東京"
-					fillStyle: "black"
+					fillStyle: Util.color.green
 					fontSize: 300
 					x: 1025
 					y: 470
+				@setFontWeight "bold"
 				@setAlign "center"
 				@setBaseline "bottom"
 				@maxWidth = 980
-				console.log @
+				@setFont(0)
+
+			setFont:(lang_flag = 0)->
+				if lang_flag is 0 or lang_flag is 2
+					@setFontFamily Util.fontStyle.japanese
+				else
+					@setFontFamily Util.fontStyle.english
+
+			setText: (lang_flag = 0, text = "text here")->
+				if lang_flag is 0 or lang_flag is 2
+					# Japanese
+				else 
+					# English
+
+
+		tm.define 'MainStationLabel',
+			superClass: 'StationLabel'
+			init: ->
+				@superInit()
 
 		# tm.define 'MainStationLabel',
 		# 	superClass: 'tm.ui.LabelArea'

@@ -13,3 +13,9 @@ class @Util
 	bg_size:
 		w: 2048
 		h: 1536
+	color:
+		green: "#009245"
+	fontStyle:
+		japanse: "'ヒラギノ角ゴ Pro','Hiragino Kaku Gothic Pro'"
+		english: "Arial,'ＭＳ Ｐゴシック',sans-serif"
+
