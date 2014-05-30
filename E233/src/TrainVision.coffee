@@ -101,9 +101,7 @@ class @TrainVision
 					x: 1025
 					y: 290
 					fontFamily: Util.fontStyle.japanese
-				# @setFontWeight "bold"
 				@setAlign "center"
-				# @setBaseline "bottom"
 				@maxWidth = 980
 				@setFont(0)
 
