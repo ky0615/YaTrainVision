@@ -18,3 +18,9 @@ div#menu-content{
 	background: rgba(0,0,0,0.3);
 	margin: 0 auto;
 }
+
+@font-face{
+	font-family: 'Hiragino Kaku Gothic ProN';
+	src: url("font/hiragino_pro_w6.otf") format('truetype');
+}
+

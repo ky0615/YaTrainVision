@@ -84,7 +84,7 @@ class @TrainVision
 				@initUIStationList()
 				tm.display.Sprite "bg", @bg_size.w, @bg_size.h
 						  .setPosition @bg_size.w/2, @bg_size.h/2
-		
+
 		tm.define 'myLoadingScene', 
 			superClass: 'tm.app.LoadingScene'
 			init: (param)->
@@ -99,10 +99,11 @@ class @TrainVision
 					fillStyle: Util.color.green
 					fontSize: 300
 					x: 1025
-					y: 470
-				@setFontWeight "bold"
+					y: 290
+					fontFamily: Util.fontStyle.japanese
+				# @setFontWeight "bold"
 				@setAlign "center"
-				@setBaseline "bottom"
+				# @setBaseline "bottom"
 				@maxWidth = 980
 				@setFont(0)
 
