@@ -16,6 +16,6 @@ class @Util
 	color:
 		green: "#009245"
 	fontStyle:
-		japanse: "'ヒラギノ角ゴ Pro','Hiragino Kaku Gothic Pro'"
+		japanese: "'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', Meiryo, メイリオ, sans-serif"
 		english: "Arial,'ＭＳ Ｐゴシック',sans-serif"
 
