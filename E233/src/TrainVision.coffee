@@ -22,6 +22,12 @@ class @TrainVision
 
 	mainCanvas: null
 
+	nowConfig:
+		destination: "takao_tokyo"
+		now_stations: 0
+		direction: "down"
+		stationList: []
+
 	init:->
 		@addScene()
 
@@ -50,18 +56,20 @@ class @TrainVision
 	isVisibleMenu: false
 	timeout: null
 
-
 	openMainUI: ->
 		$ "#menu"
 			.fadeIn()
+		@setUIStationList()
 
 	closeMainUI: ->
 		$ "#menu"
 			.fadeOut()
 
-
 	initUIStationList:=>
 		@setUIStationList()
+		@setUIDestinationList()
+		@setUIDirection()
+
 		$("#container").click =>
 			@openMainMenu()
 			if @timeout
@@ -69,20 +77,65 @@ class @TrainVision
 			@timeout = setTimeout @closeMainMenu, 3000
 
 		$("#btn-open-menu").click =>
-			console.log "発火"
 			@openMainUI()
+
 		$(".btn-cancel, .btn-submit").click =>
 			@closeMainUI()
+
+		$ "select#select_destination"
+			.change =>
+				console.log "hakka"
+				@nowConfig.destination = $("select#select_destination").val()
+				@setUIStationList @nowConfig.destination
+
+				if @nowConfig.direction is "down"
+					@nowConfig.now_stations = "0"
+				else
+					@nowConfig.now_stations = @nowConfig.stationList.length
+				$("#now_stations").val @nowConfig.now_stations
+
+
+		$ "select#now_stations"
+			.change =>
+				@nowConfig.now_stations = $("select#now_stations").val()
+
+		$("#direction [name='direction']")
+			.change =>
+				@nowConfig.direction = $("#direction [name='direction']:checked").val()
+				@updateUI()
 		return
+
+	updateUI: ->
+		@setUIDestinationList @nowConfig.destination
+		@setUIStationList @nowConfig.destination
+
+
+	setUIDestinationList: (destination = "takao_tokyo")->
+		# 前回読み込んだ物を削除するために初期化
+		des = $ "#select_destination"
+			.empty()
+		for k, v of Text.destination_list_tlanslate
+			des.append $('<option>').html(v).val(k)
+		$ "#select_destination"
+				.val destination
 
 	setUIStationList:(station = "takao_tokyo")->
 		# 要素を全て削除してから登録します。
-		# @UI.setStationList()
-		$ "#now_stations"
-			.empty()
-		if Text.destination_list[station]
-			for i in Text.get_station_list Text.destination_list[station]
-				console.log i
+		now_stations = $ "#now_stations"
+							.empty()
+		stationList = []
+		for k, v of Text.get_station_list Text.destination_list[station]
+			stationList.push [k, v]
+		if @nowConfig.direction is "up"
+			stationList = stationList.reverse()
+		for i in stationList
+			now_stations.append $('<option>').html(i[1][1][0]).val(i[0])
+
+	setUIDirection:(direction)->
+		if direction
+			@nowConfig.direction = direction
+		# TODO set checked
+		# $("#direction [name='direction']").val @nowConfig.direction
 
 	addScene:=>
 		tm.define 'MainScene', 

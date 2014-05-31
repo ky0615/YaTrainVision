@@ -93,13 +93,13 @@ class @Text
 		s_list = []
 		for i in des_station
 			if @destination_station[i]
-				for j in @destination_station[i]
-					if j and @station[j]
-						s_list.push @station[j]
+				for k, v in @destination_station[i]
+					if k and @station[k]
+						s_list.push [k, @station[k]]
 			else if Array.isArray i
 				# 最終の駅や手動登録の場合
 				for k in i
-					s_list.push @station[k]
+					s_list.push [k, @station[k]]
 		return s_list
 
 

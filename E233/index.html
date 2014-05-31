@@ -26,25 +26,35 @@
 				<form action="#" class="form-horizontal">
 					<fieldset>
 						<div class="form-group">
-							<label for="line" class="col-lg-4 control-label">使用路線</label>
+							<label for="select_destination" class="col-lg-4 control-label">使用路線</label>
 							<div class="col-lg-6">
-								<select name="" id="line" class="form-control">
-								</select>
-							</div>
+							<select name="" class="form-control" id="select_destination"></select>
 						</div>
-						<div class="form-group">
-							<label for="now_stations" class="col-lg-4 control-label">現在駅</label>
-							<div class="col-lg-6">
-								<select class="form-control" id="now_stations">
-								</select>
-							</div>
+					</div>
+					<div class="form-group">
+						<div class="col-lg-10" id="direction">
+							<input type="radio" name="direction" id="up" value="up">
+							<label for="up">上り</label>
+							<input type="radio" name="direction" id="down" value="down">
+							<label for="down">下り</label>
 						</div>
-						<div class="form-group">
+					</div>
+					<div class="form-group">
+						<label for="now_stations" class="col-lg-4 control-label">現在駅</label>
+						<div class="col-lg-6">
+							<select class="form-control" id="now_stations">
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-lg-6"></div>
+						<div class="col-lg-4">
 							<button class="btn btn-default btn-cancel">Cancel</button>
 							<button type="submit" class="btn btn-primary btn-submit">Submit</button>
-						</fieldset>
-					</form>
-				</div>
+						</div>
+					</fieldset>
+				</form>
 			</div>
-		</body>
-	</html>
+		</div>
+	</body>
+</html>
