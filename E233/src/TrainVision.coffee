@@ -38,22 +38,41 @@ class @TrainVision
 		@app.replaceScene @LoadingScene
 		@app.run()
 
-	open:->
-		$ "#menu"
+	openMainMenu:->
+		$ "#main-menu"
 			.fadeIn()
 	
-	close:->
+	closeMainMenu:->
+		$ "#main-menu"
+			.fadeOut()
+		@timeout = null
+
+	isVisibleMenu: false
+	timeout: null
+
+
+	openMainUI: ->
+		$ "#menu"
+			.fadeIn()
+
+	closeMainUI: ->
 		$ "#menu"
 			.fadeOut()
 
+
 	initUIStationList:=>
 		@setUIStationList()
-		# $ "#container"
-		# 	.click @open()
 		$("#container").click =>
-			@open()
+			@openMainMenu()
+			if @timeout
+				clearTimeout @timeout
+			@timeout = setTimeout @closeMainMenu, 3000
+
+		$("#btn-open-menu").click =>
+			console.log "発火"
+			@openMainUI()
 		$(".btn-cancel, .btn-submit").click =>
-			@close()
+			@closeMainUI()
 		return
 
 	setUIStationList:(station = "takao_tokyo")->
