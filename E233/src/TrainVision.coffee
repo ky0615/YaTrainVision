@@ -27,6 +27,7 @@ class @TrainVision
 		now_stations: 0
 		direction: "down"
 		stationList: []
+		trainNumber: 5
 
 	init:->
 		@addScene()
@@ -84,6 +85,9 @@ class @TrainVision
 		$(".btn-cancel, .btn-submit").click =>
 			@closeMainUI()
 
+		$('.btn-submit').click =>
+			@setParam()
+
 		$ "select#select_destination"
 			.change =>
 				console.log "hakka"
@@ -106,6 +110,10 @@ class @TrainVision
 				@nowConfig.direction = $("#direction [name='direction']:checked").val()
 				@updateUI()
 		return
+
+
+	setParam:->
+		@nowConfig.trainNumber = $('#train-number').val()
 
 	updateUI: ->
 		@setUIDestinationList @nowConfig.destination
@@ -152,7 +160,10 @@ class @TrainVision
 				return
 			labelInit: ->
 				@MainStationLabel = MainStationLabel()
+				@TrainNumberLabel = TrainNumberLabel()
+
 				@mainGroup.addChild @MainStationLabel
+				@mainGroup.addChild @TrainNumberLabel
 
 			addBackgroundImage: =>
 				@initUIStationList()
@@ -196,6 +207,19 @@ class @TrainVision
 			superClass: 'StationLabel'
 			init: ->
 				@superInit()
+
+		tm.define 'TrainNumberLabel',
+			superClass: 'StationLabel'
+			init:->
+				@superInit()
+				@setFont 1
+				@text = "1145141919810"
+				@x = 1940
+				@y = 120
+				@fillStyle = "#000000"
+				@fontSize = 150
+				@maxWidth = 150
+
 
 		# tm.define 'MainStationLabel',
 		# 	superClass: 'tm.ui.LabelArea'
