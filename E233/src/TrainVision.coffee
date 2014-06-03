@@ -44,6 +44,8 @@ class @TrainVision
 		@app.replaceScene @LoadingScene
 		@app.run()
 
+		@initTimer()
+
 	openMainMenu:->
 		$ "#main-menu"
 			.fadeIn()
@@ -208,5 +210,41 @@ class @TrainVision
 		# 		)
 		# 		@setX 800
 		# 		@setY 1200
+		return
 
+	updateMainPanel:->
+		# console.log "updateMainPanel"
+
+	updateSubPanel:->
+		# console.log "updateSubPanel"
+
+	initTimer: ->
+		if not @timer
+			@setTimerConf()
+			@timer = setInterval @_timerHook, 1000
+
+	setTimerConf: ->
+		@timerCB = [
+			{
+				name: "main"
+				time: 3
+				cb: @updateMainPanel
+			},
+			{
+				name: "sub"
+				time: 6
+				cb: @updateSubPanel
+			}
+		]
+
+	_timerHookCount:0
+	_timerHook: =>
+		# console.log "timer"
+		for i in @timerCB
+			i._time = i._time || 1
+			if i._time >= i.time
+				i.cb()
+				i._time = 0
+			else
+				i._time++
 		return
